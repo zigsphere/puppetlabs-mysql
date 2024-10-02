@@ -102,7 +102,7 @@ define mysql::db (
 
   $user_resource = {
     ensure        => $ensure,
-    password_hash => Deferred('mysql::password', [$password]),
+    password_hash => $password,
     tls_options   => $tls_options,
   }
   ensure_resource('mysql_user', "${user}@${host}", $user_resource)
